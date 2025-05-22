@@ -1,0 +1,1201 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/18/2025 8:04:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-TPG17OF"
+  DTS:CreatorName="DESKTOP-TPG17OF\LEGION"
+  DTS:DTSID="{9802ECAA-2625-41E0-A1DE-FB893D339A75}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1066"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{286DDDB0-6E48-4C8B-8B8A-422555E5FB50}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-TPG17OF.Hopepital_DBStore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{98773069-964F-451A-892F-B9C17DF0EA81}"
+      DTS:ObjectName="DESKTOP-TPG17OF.Hopepital_DBStore">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-TPG17OF;Initial Catalog=Hopepital_DBStore;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-TPG17OF.Hospital_Stagging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{095D1BBE-C183-406E-BAD6-B6411FEC40AD}"
+      DTS:ObjectName="DESKTOP-TPG17OF.Hospital_Stagging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-TPG17OF;Initial Catalog=Hospital_Stagging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Load to Date Stage"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3ABDAA79-29DC-4F50-A382-E22E9FE421D7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Load to Date Stage"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Load to Date Stage\DST - Time Stage"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Time Stage"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Time]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load to Date Stage\DST - Time Stage.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-TPG17OF.Hospital_Stagging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TPG17OF.Hospital_Stagging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[date key]"
+                      cachedDataType="r8"
+                      cachedName="date key"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[date key]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[date key]" />
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[day num in month]"
+                      cachedDataType="r8"
+                      cachedName="day num in month"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[day num in month]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day num in month]" />
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[day name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="day name"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[day name]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day name]" />
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[month]"
+                      cachedDataType="r8"
+                      cachedName="month"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[month]" />
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[quarter]"
+                      cachedDataType="r8"
+                      cachedName="quarter"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[quarter]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[quarter]" />
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].Columns[year]"
+                      cachedDataType="r8"
+                      cachedName="year"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[year]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[date key]"
+                      dataType="i4"
+                      name="date key" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[day num in month]"
+                      dataType="i4"
+                      name="day num in month" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      name="day name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      dataType="i4"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[quarter]"
+                      dataType="i4"
+                      name="quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load to Date Stage\DST - Time Stage.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load to Date Stage\DST - Time Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\DST - Time Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load to Date Stage\DST - Time Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load to Date Stage\SCR - DBStore Time"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SCR - DBStore Time"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].['DateDimension']</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-TPG17OF.Hopepital_DBStore]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TPG17OF.Hopepital_DBStore]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[date key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[date key]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[date key]"
+                      name="date key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[full date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[full date]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[full date]"
+                      name="full date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day of week]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day of week]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day of week]"
+                      name="day of week"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num in month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day num in month]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num in month]"
+                      name="day num in month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day num overall]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num overall]"
+                      name="day num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day name]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day name]"
+                      name="day name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day abbrev]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day abbrev]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day abbrev]"
+                      name="day abbrev"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[weekday flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[weekday flag]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[weekday flag]"
+                      name="weekday flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week num in year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week num in year]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week num in year]"
+                      name="week num in year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week num overall]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week num overall]"
+                      name="week num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week begin date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week begin date]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week begin date]"
+                      name="week begin date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week begin date key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week begin date key]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[week begin date key]"
+                      name="week begin date key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month]"
+                      name="month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month num overall]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month num overall]"
+                      name="month num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month name]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month name]"
+                      name="month name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month abbrev]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month abbrev]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month abbrev]"
+                      name="month abbrev"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[quarter]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[quarter]"
+                      name="quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[yearmo]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[yearmo]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[yearmo]"
+                      name="yearmo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal month]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal month]"
+                      name="fiscal month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal quarter]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal quarter]"
+                      name="fiscal quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal year]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[fiscal year]"
+                      name="fiscal year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month end flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month end flag]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month end flag]"
+                      name="month end flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[same day year ago]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[same day year ago]"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[same day year ago]"
+                      name="same day year ago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[F25]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[F25]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[F25]"
+                      name="F25"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[table insert statement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[table insert statement]"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[table insert statement]"
+                      name="table insert statement"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[date key]"
+                      dataType="r8"
+                      name="date key" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[full date]"
+                      dataType="dbTimeStamp"
+                      name="full date" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day of week]"
+                      dataType="r8"
+                      name="day of week" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day num in month]"
+                      dataType="r8"
+                      name="day num in month" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day num overall]"
+                      dataType="r8"
+                      name="day num overall" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      name="day name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[day abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      name="day abbrev" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[weekday flag]"
+                      dataType="wstr"
+                      length="255"
+                      name="weekday flag" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week num in year]"
+                      dataType="r8"
+                      name="week num in year" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week num overall]"
+                      dataType="r8"
+                      name="week num overall" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week begin date]"
+                      dataType="dbTimeStamp"
+                      name="week begin date" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[week begin date key]"
+                      dataType="r8"
+                      name="week begin date key" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month num overall]"
+                      dataType="r8"
+                      name="month num overall" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month name]"
+                      dataType="wstr"
+                      length="255"
+                      name="month name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      name="month abbrev" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[quarter]"
+                      dataType="r8"
+                      name="quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[yearmo]"
+                      dataType="r8"
+                      name="yearmo" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal month]"
+                      dataType="r8"
+                      name="fiscal month" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal quarter]"
+                      dataType="r8"
+                      name="fiscal quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[fiscal year]"
+                      dataType="r8"
+                      name="fiscal year" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[month end flag]"
+                      dataType="wstr"
+                      length="255"
+                      name="month end flag" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[same day year ago]"
+                      dataType="dbTimeStamp"
+                      name="same day year ago" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[F25]"
+                      dataType="wstr"
+                      length="255"
+                      name="F25" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].ExternalColumns[table insert statement]"
+                      dataType="wstr"
+                      length="255"
+                      name="table insert statement" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[date key]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[date key]"
+                      name="date key" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[full date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[full date]"
+                      name="full date" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day of week]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day of week]"
+                      name="day of week" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day num in month]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day num in month]"
+                      name="day num in month" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day num overall]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day num overall]"
+                      name="day num overall" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day name]"
+                      name="day name" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[day abbrev]"
+                      name="day abbrev" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[weekday flag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[weekday flag]"
+                      name="weekday flag" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week num in year]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week num in year]"
+                      name="week num in year" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week num overall]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week num overall]"
+                      name="week num overall" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week begin date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week begin date]"
+                      name="week begin date" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week begin date key]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[week begin date key]"
+                      name="week begin date key" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month]"
+                      name="month" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month num overall]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month num overall]"
+                      name="month num overall" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month name]"
+                      name="month name" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month abbrev]"
+                      name="month abbrev" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[quarter]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[quarter]"
+                      name="quarter" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[year]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[yearmo]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[yearmo]"
+                      name="yearmo" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal month]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal month]"
+                      name="fiscal month" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal quarter]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal quarter]"
+                      name="fiscal quarter" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal year]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[fiscal year]"
+                      name="fiscal year" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month end flag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[month end flag]"
+                      name="month end flag" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[same day year ago]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[same day year ago]"
+                      name="same day year ago" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[F25]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[F25]"
+                      name="F25" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[table insert statement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[table insert statement]"
+                      name="table insert statement" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load to Date Stage\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[date key]"
+                      cachedDataType="r8"
+                      cachedName="date key"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[date key]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[day num in month]"
+                      cachedDataType="r8"
+                      cachedName="day num in month"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num in month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[day name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="day name"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[month]"
+                      cachedDataType="r8"
+                      cachedName="month"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[quarter]"
+                      cachedDataType="r8"
+                      cachedName="quarter"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[quarter]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="r8"
+                      cachedName="year"
+                      lineageId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[date key]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[date key]"
+                      name="date key"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[date key]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day num in month]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day num in month]"
+                      name="day num in month">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day num in month]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[day name]"
+                      name="day name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[day name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[month]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[month]"
+                      name="month">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[month]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[quarter]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[quarter]"
+                      name="quarter">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[quarter]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[year]"
+                      dataType="r8"
+                      lineageId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Load to Date Stage.Paths[OLE DB Source Output]"
+              endId="Package\DF - Load to Date Stage\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Load to Date Stage\SCR - DBStore Time.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF - Load to Date Stage.Paths[Sort Output]"
+              endId="Package\DF - Load to Date Stage\DST - Time Stage.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\DF - Load to Date Stage\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table Time"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{340974AD-FDC5-415E-9E99-6405D55008BC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table Time"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{095D1BBE-C183-406E-BAD6-B6411FEC40AD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Time;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0B702B11-CCE9-4859-9F9E-7E5FD6CFD029}"
+      DTS:From="Package\Truncate Table Time"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Load to Date Stage" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\DF - Load to Date Stage"
+          TopLeft="230.000003916877,233.235297388684" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Truncate Table Time"
+          TopLeft="234.285718275576,74.1764716285323" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="324.142861096227,115.776471628532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,117.458825760152"
+              Start="0,0"
+              End="0,109.958825760152">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.958825760152" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Load to Date Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\DF - Load to Date Stage\Sort"
+          TopLeft="242.142861266526,186.588237910947" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\DF - Load to Date Stage\SCR - DBStore Time"
+          TopLeft="210.000003576279,70.352942163144" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DF - Load to Date Stage\DST - Time Stage"
+          TopLeft="210.000003576279,313.529416161838" />
+        <EdgeLayout
+          Id="Package\DF - Load to Date Stage.Paths[Sort Output]"
+          TopLeft="290.871432421402,228.188237910947">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,85.3411782508905"
+              Start="0,0"
+              End="0,77.8411782508905">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.8411782508905" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF - Load to Date Stage.Paths[OLE DB Source Output]"
+          TopLeft="293.671432421402,111.952942163144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.6352957478032"
+              Start="0,0"
+              End="0,67.1352957478032">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.1352957478032" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load to Date Stage\SCR - DBStore Time">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load to Date Stage\DST - Time Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,82 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>DataCube_BillDetail</Database>
+    <Server>DESKTOP-TPG17OF\HIEUSSAS</Server>
+    <ConnectionString>Data Source=DESKTOP-TPG17OF\HIEUSSAS;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>HoD4B/oOQlI+WdX33Pdi4zessrE=20/05/2025 10:45:37 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Hopepital DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>Ns9BxWDy9kQeBtnLSS6eFemQpqQ=20/05/2025 10:51:56 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Hopepital DSView</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>KRkW5EevOY1O1g6N/GiEXKfzM38=20/05/2025 10:58:47 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Dim Time</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>1eLlNwQucQzML2WM/AEqkQy3NIE=20/05/2025 10:58:47 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Dim Patient</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>eI5YVC5wMLTe9Lur7d4ElDOn71c=22/05/2025 2:57:02 CH21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Dim Doctor</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>yuJ6TXJLliIKb+gyieEDy3jwxVo=20/05/2025 10:58:47 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Dim Item</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>0Wa0kFgyLSbry6rt+Qv6cZMpYjg=20/05/2025 10:58:47 SA21/05/2025 11:46:48 CHhnIz/RRSht+tZTSU8d+N/Y/t5J0=20/05/2025 10:52:18 SA21/05/2025 11:46:48 CH</TimeStamp>
+        <ID>
+          <String>Hopepital Cube</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>5y3do0z4goZ9KH6YEUnxyeViYSI=20/05/2025 10:41:26 SA21/05/2025 11:46:48 CH</TimeStamp>
+      <ID>
+        <String>DataCube_BillDetail</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2025-05-22T07:57:22.916667Z</LastDeployed>
+</DeploymentSnapshot>

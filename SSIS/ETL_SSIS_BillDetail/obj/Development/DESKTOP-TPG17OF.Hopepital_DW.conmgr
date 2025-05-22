@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-TPG17OF.Hopepital_DW"
+  DTS:DTSID="{24644A35-75B9-446D-A3DF-1056C9766C2E}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-TPG17OF;Initial Catalog=Hopepital_DW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{24644A35-75B9-446D-A3DF-1056C9766C2E}DESKTOP-TPG17OF.Hopepital_DW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
