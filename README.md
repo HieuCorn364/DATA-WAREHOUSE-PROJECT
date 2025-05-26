@@ -62,12 +62,12 @@ Load detailed date and time information in 2016 (year of invoice storage)
 
 ### 1. Design load data for Dim table type 1
 <p align="center">
-  <a href="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Load-from-DBStage-to-DW-Type1.png">LoadDBtoDW</a>
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Load-from-DBStage-to-DW-Type1.png?raw=true" alt="Load from DBStage to DW Type1" width="700" />
 </p>
 
 ### 2. Design load data for Dim table type 2
 <p align="center">
-  <a href="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Load-from-DBStage-to-DW-Type2.png">LoadDBtoDWType2</a>
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Load-from-DBStage-to-DW-Type2.png?raw=true" alt="Load from DBStage to DW Type2" width="700" />
 </p>
 
 # Generate Cube
