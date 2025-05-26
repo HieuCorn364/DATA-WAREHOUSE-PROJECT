@@ -70,6 +70,20 @@ Load detailed date and time information in 2016 (year of invoice storage)
   <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Load-from-DBStage-to-DW-Type2.png?raw=true" alt="Load from DBStage to DW Type2" width="700" />
 </p>
 
+# Result ETL
+<p align="center">
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Result1.png?raw=true" alt="Result1" width="700" />
+</p>
+<p align="center">
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Result2.png?raw=true" alt="Result2" width="700" />
+</p>
+<p align="center">
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Result3.png?raw=true" alt="Result3" width="700" />
+</p>
+<p align="center">
+  <img src="https://github.com/HieuCorn364/DATA-WAREHOUSE-PROJECT/blob/main/Images/Result4.png?raw=true" alt="Result4" width="700" />
+</p>
+
 # Generate Cube
 Create a cube to be able to observe the data warehouse in different dimensions of the data warehouse, easily for querying and analyzing with Excel or Power BI
 ### 1. Item Hierarchy
